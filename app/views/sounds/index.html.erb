@@ -1,0 +1,16 @@
+<div class="section-sounds">
+	<% @sounds.each do |sound| %>
+	<div class="section-sound">
+		<div class="img-sound">
+			<img src="<%= sound.poster %>"></img>
+		</div>
+		<div class="title-sound">
+			<h1><%= sound.title %></h1>
+		</div>
+		
+		<div class="audio-sound">
+			<audio controls="true" controlsList="nodownload" src="<%= sound.source %>" type="audio/mpeg"></audio>
+		</div>
+	</div>
+	<% end %>
+</div>

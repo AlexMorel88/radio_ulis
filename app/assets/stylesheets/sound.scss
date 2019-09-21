@@ -1,0 +1,30 @@
+// Place all the styles related to the Sound controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sounds {
+
+
+	
+
+	.section-sounds {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		
+		flex-direction:column;
+
+	}
+
+	.section-sound {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction:row;
+
+	}
+
+	.img-sound > img {
+		width:50%;
+	}
+}
