@@ -4,4 +4,8 @@ class SoundsController < ApplicationController
 		@sounds = Sound.all
 
 	end
+
+	def new
+
+	end
 end

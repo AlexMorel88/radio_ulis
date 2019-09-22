@@ -1,5 +1,8 @@
 {
   "name": "radio_ulis",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "blueimp-file-upload": "^10.2.0",
+    "cloudinary-jquery-file-upload": "^2.7.4"
+  }
 }
