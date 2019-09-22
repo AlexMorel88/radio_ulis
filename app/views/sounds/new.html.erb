@@ -1,16 +1,19 @@
 <button id="upload_widget" class="cloudinary-button">Upload files</button>
 
+<% byebug %>
+
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
-<script>
-  cloudinary.setCloudName("dvhymcfm3");
-</script>
+
 
 
 
 <script type="text/javascript">  
-var widget = cloudinary.createUploadWidget({ 
-  cloudName: "dvhymcfm3", uploadPreset: "msg2xcck" }, (error, result) => { });
-widget.open();
+var myWidget = cloudinary.createUploadWidget({ 
+  cloudName: "dvhymcfm3", uploadPreset: "msg2xcck", folder: "radio_ulis/audio", publicId: "<%= @sound.id %>"}, (error, result) => { });
+
+console.log("<%= @sound.id %>");
+//pas encore d'id tant que pas créé le sound
+
 
 document.getElementById("upload_widget").addEventListener("click", function(){
     myWidget.open();
