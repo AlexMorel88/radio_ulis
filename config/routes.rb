@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   
   resources :sounds
   resources :playlists
+
+  root to: 'playlists#index'
+  
 end

@@ -10,7 +10,22 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+
+//= require jquery-3.1.1.min
+//= require flickity.min
+//= require easypiechart.min
+//= require parallax
+//= require typed.min
+//= require datepicker
+//= require isotope.min
+//= require ytplayer.min
+//= require lightbox.min
+//= require granim.min
+//= require jquery.steps.min
+//= require countdown.min
+//= require twitterfetcher.min
+//= require spectragram.min
+//= require smooth-scroll.min
 //= require activestorage
 //= require cloudinary
 //= require turbolinks
