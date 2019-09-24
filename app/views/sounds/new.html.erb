@@ -19,3 +19,21 @@ document.getElementById("upload_widget").addEventListener("click", function(){
     myWidget.open();
   }, false);
 </script>
+
+
+<div class="section-sounds">
+	<% @sounds.each do |sound| %>
+	<div class="section-sound">
+		<div class="img-sound">
+			<img src="<%= sound.poster %>"></img>
+		</div>
+		<div class="title-sound">
+			<h3><%= sound.title %></h3>
+		</div>
+		
+		<div class="audio-sound">
+			<audio controls="true" controlsList="nodownload" src="<%= sound.source %>" type="audio/mpeg"></audio>
+		</div>
+	</div>
+	<% end %>
+</div>

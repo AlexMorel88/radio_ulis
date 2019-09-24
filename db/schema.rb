@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_21_134139) do
+ActiveRecord::Schema.define(version: 2019_09_24_213956) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -30,7 +30,9 @@ ActiveRecord::Schema.define(version: 2019_09_21_134139) do
     t.integer "playlist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sound_id"
     t.index ["playlist_id"], name: "index_playlist_sounds_on_playlist_id"
+    t.index ["sound_id"], name: "index_playlist_sounds_on_sound_id"
   end
 
   create_table "playlists", force: :cascade do |t|
@@ -46,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_09_21_134139) do
     t.datetime "updated_at", null: false
     t.string "source"
     t.string "poster"
+    t.string "author"
   end
 
   create_table "users", force: :cascade do |t|
