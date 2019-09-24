@@ -12,12 +12,4 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap
- *= require stack-interface
- *= require socicon
- *= require lightbox.min
- *= require flickity
- *= require iconsmind
- *= require jquery.steps
- *= require custom
  */

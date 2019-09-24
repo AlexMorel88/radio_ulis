@@ -14,7 +14,6 @@
 //= require jquery-3.1.1.min
 //= require flickity.min
 //= require easypiechart.min
-//= require parallax
 //= require typed.min
 //= require datepicker
 //= require isotope.min
