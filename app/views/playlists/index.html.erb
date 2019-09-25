@@ -1,43 +1,49 @@
- <% @playlists.each do |play| %>
-<div class="tab__content">
-	<h2><%= play.title %></h2>
+<div class="section-playlists">
+  <div class="tab__content">
     <section class="switchable ">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 switchable__text">
-                    <ul class="accordion accordion-1" style="min-height: 0px;">
+      <div class="container">
+        <div class="row">
+         <h2>Ulis de Lastvader</h2>
+         <span h3><%= @playlists.count %> Playlists à découvrir </span>
+         <span h3>- <%= Sound.all.count %> Sons à écouter </span>
+         <div class="col switchable__text">
+          <ul class="accordion accordion-1" style="min-height: 0px;">
 
-                        <% play.playlist_sound.each do |play_list| %>
-                        <li>
-                            <div class="accordion__title">
-                                <span class="h5"><%= Sound.find(play_list.sound_id).title %></span>
-                            </div>
-                            <div class="accordion__content">
-                                <div class="section-sound">
-                                    <div class="img-sound">
-                                        <img src="<%= url_poster(Sound.find(play_list.sound_id)) %>"></img>
-                                    </div>
-                                    <div class="audio-sound">
-                                        <audio controls="true" controlsList="nodownload" src="<%= url_audio(Sound.find(play_list.sound_id)) %>" type="audio/mpeg">
-                                        </audio>
-                                    </div>
-                                </div>
+            <% @playlists.each do |play| %>
 
-                            </div>
-                        </li>
-                        <% end %>
-                        
-                    </ul>
-                    <!--end accordion-->
+
+            <li>
+              <div class="accordion__title">
+                <span class="h4"><%= play.title %> </span> - <span class="h5"><%= play.playlist_sound.count %> Émissions</span>
+              </div>
+              <% play.playlist_sound.each do |play_list| %>
+              <div class="accordion__content">
+                <div class="section-sounds">
+                <div class="section-sound">
+                  <h3><%= Sound.find(play_list.sound_id).title %></h3>
+                  <div class="img-sound">
+                    <img src="https://res.cloudinary.com/dvhymcfm3/image/upload/v1569358661/radio_ulis/poster/product-small-7.jpg"></img>
+                  </div>
+                  <div class="audio-sound">
+                    <audio controls="true" controlsList="nodownload" src="<%= url_audio(Sound.find(play_list.sound_id)) %>" type="audio/mpeg">
+                    </audio>
+                  </div>
                 </div>
-                <div class="col-md-5 col-sm-6">
-                   <%= image_tag 'product-single-large-1.jpg', class: 'border--round box-shadow-wide' %>
+              </div>
 
-               </div>
-           </div>
-           <!--end of row-->
-       </div>
-       <!--end of container-->
-   </section>
+              </div>
+              <% end %>
+            </li>
+            <% end %>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
 </div>
-<% end %>
+</div>
