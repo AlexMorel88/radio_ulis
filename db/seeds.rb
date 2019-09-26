@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-Sound.destroy_all
-Playlist.destroy_all
-PlaylistSound.destroy_all
+#PlaylistSound.destroy_all
+#Sound.destroy_all
+#Playlist.destroy_all
 
 s1 = Sound.create(title: 'Doryan - Émission 1 - Les trois petits cochons', poster: 'product-small-7', source: 'Doryan_-_Emission_1_-_Les_trois_petits_cochons')
 s2 = Sound.create(title: 'Doryan - Émission 3 - Le chat botté 1', poster: 'product-small-7', source: 'Doryan_-_Emission_3_-_Le_chat_bottC3A9_1')

@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2019_09_25_202843) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
@@ -27,10 +30,10 @@ ActiveRecord::Schema.define(version: 2019_09_25_202843) do
   end
 
   create_table "playlist_sounds", force: :cascade do |t|
-    t.integer "playlist_id"
+    t.bigint "playlist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sound_id"
+    t.bigint "sound_id"
     t.integer "order"
     t.index ["playlist_id"], name: "index_playlist_sounds_on_playlist_id"
     t.index ["sound_id"], name: "index_playlist_sounds_on_sound_id"
@@ -64,4 +67,6 @@ ActiveRecord::Schema.define(version: 2019_09_25_202843) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "playlist_sounds", "playlists"
+  add_foreign_key "playlist_sounds", "sounds"
 end
