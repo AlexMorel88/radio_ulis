@@ -16,27 +16,37 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		
 		flex-direction:column;
+		width:100%;
 
 	}
 
 	.section-sounds > div {
-		margin:15px;
+		margin-top:5px;
+		margin-bottom: 5px;
 	}
-	.section-sound > div {
-		margin:15px;
-	}
+	
 
 	.section-sound {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
 		flex-direction:row;
 
 	}
 
+	.title-sound {
+		width:400px;
+	}
+
 	.img-sound > img {
-		width:25%;
+		height:50px;
+	}
+	.play-sound > img {
+		height:40px;
+		cursor: pointer;
+		&:hover {
+			filter:grayscale(100);
+		}
 	}
 }

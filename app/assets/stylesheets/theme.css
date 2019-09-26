@@ -1537,6 +1537,8 @@ div.recaptcha iframe {
   opacity: 0;
   visibility: hidden;
   max-height: 0;
+  margin-left:15px;
+    margin-right: 15px;
 }
 .accordion li .accordion__content > * {
   display: none;
