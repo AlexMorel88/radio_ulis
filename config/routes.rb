@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  
-  resources :sounds
-  resources :playlists
+	devise_for :admin_users, ActiveAdmin::Devise.config
+	ActiveAdmin.routes(self)
 
-  root to: 'playlists#index'
-  
+	resources :playlists do
+		get 'index', action: :index
+	end
+
+	root to: 'playlists#index'
+
 end

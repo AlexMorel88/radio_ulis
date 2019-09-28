@@ -14,5 +14,23 @@ ActiveAdmin.register Sound do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+action_item :view, only: :edit do
+  link_to "Upload mp3 ou image", upload_admin_sound_path
+end
+
+member_action :upload, method: :get do
+  render 'upload'
+end
+
+collection_action :update, :method => :put do
+
+    sound = Sound.find params[:id] 
+    sound.source params[:source] if params[:source]
+    sound.source params[:poster] if params[:poster]
+
+
+end
+
   
 end

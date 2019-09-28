@@ -1,16 +1,8 @@
 class SoundsController < ApplicationController
-
-	def index
-		@sounds = Sound.all
-
-	end
-
-	def new
-		@sound = Sound.new
-
-	end
-
-	def create 
-
-	end
+	
+	def update
+		sound = Sound.find params[:id] 
+		sound.source params[:source] if params[:source]
+		sound.source params[:poster] if params[:poster]
+	end	
 end
