@@ -1,10 +1,28 @@
 <button id="upload_mp3" class="cloudinary-button">Upload mp3</button>
+ <audio id="sound_preview"></audio>
 <button id="upload_poster" class="cloudinary-button">Upload image</button>
+<image id="preview" style="width:100px;"></image>
 
-  <image id="preview"></image>
+  
+ 
 
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 
+
+
+<div style="display:none;">
+<%= semantic_form_for [:admin, Sound.find(params[:id])] do |f| %>
+		<%= hidden_field_tag :par_ici, value: true %>
+		<%= 	f.inputs do %>
+		<%= 	f.input :poster %>
+		<%= 	f.input :source %>
+
+	<% end %>
+	<%= f.actions %>
+	
+	
+<% end %>
+</div>
 
 
 <script type="text/javascript">  
@@ -26,9 +44,10 @@
 
 			if (result.info.url != null) {
 				console.log(result.info.url);
-				updateSoundPoster(result.info.url);
-
 				$("#preview").attr('src', result.info.url);
+				$("#sound_poster").val(result.info.url);
+				$("#edit_sound_34").submit();
+
 			}
 		});
 
@@ -66,10 +85,20 @@
 
 
 		$.ajax({
-			type: "POST",
-			url: "/sounds/34",
-			success: function(data) {
-				console.log(data);
+			type: 'PATCH',
+			dataType: 'json',
+			accept: 'json',
+			path: '34',
+			data: {
+				source: url
+			},
+			beforeSend: (xhr, options) => {
+				xhr.setRequestHeader('Content-Type', 'application/json')
+				return true
+			},
+			success: (response) => {
+			},
+			failure: (response) => {
 			}
 		});
 	}

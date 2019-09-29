@@ -1,6 +1,18 @@
 ActiveAdmin.register Sound do
 
-  
+
+  controller do
+    def update
+      update! do |format|
+        byebug
+        if params[:par_ici].present?
+          format.html { redirect_to upload_admin_sound_path }
+        end
+      end
+    end
+  end
+
+
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -23,15 +35,6 @@ end
 
 member_action :upload, method: :get do
   render 'upload'
-end
-
-collection_action :update, :method => :put do
-
-    sound = Sound.find params[:id] 
-    sound.source params[:source] if params[:source]
-    sound.source params[:poster] if params[:poster]
-
-
 end
 
   
