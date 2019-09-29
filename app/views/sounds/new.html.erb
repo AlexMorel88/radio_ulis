@@ -1,39 +1,95 @@
-<button id="upload_widget" class="cloudinary-button">Upload files</button>
+<button id="upload_mp3" class="cloudinary-button">Upload mp3</button>
+<button id="upload_poster" class="cloudinary-button">Upload image</button>
 
-<% byebug %>
+<image id="preview"></image>
 
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 
 
 
-
 <script type="text/javascript">  
-var myWidget = cloudinary.createUploadWidget({ 
-  cloudName: "dvhymcfm3", uploadPreset: "msg2xcck", folder: "radio_ulis/audio", publicId: "<%= @sound.id %>"}, (error, result) => { });
+	var mp3_widget = cloudinary.createUploadWidget({ 
+		cloudName: "dvhymcfm3", uploadPreset: "msg2xcck", folder: "radio_ulis/audio", multiple: false }, (error, result) => { 
 
-console.log("<%= @sound.id %>");
-//pas encore d'id tant que pas créé le sound
+			if (result.info.url != null) {
+				//updateSoundSource(result.info.url);
+			}
+		});
 
 
-document.getElementById("upload_widget").addEventListener("click", function(){
-    myWidget.open();
-  }, false);
+	document.getElementById("upload_mp3").addEventListener("click", function(){
+		mp3_widget.open();
+	}, false);
+
+	var poster_widget = cloudinary.createUploadWidget({ 
+		cloudName: "dvhymcfm3", uploadPreset: "msg2xcck", folder: "radio_ulis/poster", multiple: false }, (error, result) => { 
+
+			if (result.info.url != null) {
+				console.log(result.info.url);
+
+				testUpload(result.info.url);
+
+				$("#preview").attr('src', result.info.url);
+			}
+		});
+
+
+	document.getElementById("upload_poster").addEventListener("click", function(){
+		poster_widget.open();
+	}, false);
+
+
+	function updateSoundSource(url) {
+
+		var fd = new FormData();
+		fd.append('source', url);
+		Rails.ajax({
+			type: "PUT",
+			url: `/sounds/"#{params[:id]}"`,
+			data: fd
+		});
+
+	}
+
+	function updateSoundPoster(url) {
+
+		var fd = new FormData();
+		fd.append('source', url);
+		Rails.ajax({
+			type: "PATCH",
+			url: "/sounds/34",
+			data: fd
+		});
+
+	}
+
+	function testUpload(url) {
+
+		Rails.ajax({
+			type: 'PATCH',
+			dataType: 'json',
+			accept: 'json',
+			url: '/sounds/34',
+			data: {
+				source: url
+			},
+			beforeSend: (xhr, options) => {
+				xhr.setRequestHeader('Content-Type', 'application/json')
+				return true
+			},
+			success: (response) => {
+			},
+			failure: (response) => {
+			}
+		});
+
+
+		
+	}
+
+
 </script>
 
 
-<div class="section-sounds">
-	<% @sounds.each do |sound| %>
-	<div class="section-sound">
-		<div class="img-sound">
-			<img src="<%= sound.poster %>"></img>
-		</div>
-		<div class="title-sound">
-			<h3><%= sound.title %></h3>
-		</div>
-		
-		<div class="audio-sound">
-			<audio controls="true" controlsList="nodownload" src="<%= sound.source %>" type="audio/mpeg"></audio>
-		</div>
-	</div>
-	<% end %>
-</div>
+
+

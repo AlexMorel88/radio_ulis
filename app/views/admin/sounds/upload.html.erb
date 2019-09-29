@@ -1,13 +1,15 @@
 <button id="upload_mp3" class="cloudinary-button">Upload mp3</button>
 <button id="upload_poster" class="cloudinary-button">Upload image</button>
 
+  <image id="preview"></image>
+
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 
 
 
 <script type="text/javascript">  
 	var mp3_widget = cloudinary.createUploadWidget({ 
-		cloudName: "dvhymcfm3", uploadPreset: "msg2xcck", folder: "radio_ulis/audio" }, (error, result) => { 
+		cloudName: "dvhymcfm3", uploadPreset: "msg2xcck", folder: "radio_ulis/audio", multiple: false }, (error, result) => { 
 
 			if (result.info.url != null) {
 				//updateSoundSource(result.info.url);
@@ -20,13 +22,13 @@
 	}, false);
 
 	var poster_widget = cloudinary.createUploadWidget({ 
-		cloudName: "dvhymcfm3", uploadPreset: "msg2xcck", folder: "radio_ulis/poster" }, (error, result) => { 
+		cloudName: "dvhymcfm3", uploadPreset: "msg2xcck", folder: "radio_ulis/poster", multiple: false }, (error, result) => { 
 
 			if (result.info.url != null) {
+				console.log(result.info.url);
+				updateSoundPoster(result.info.url);
 
-				//var myform = document.getElementById("myform");
-
-				//(result.info.url);
+				$("#preview").attr('src', result.info.url);
 			}
 		});
 
@@ -35,22 +37,12 @@
 		poster_widget.open();
 	}, false);
 
-	$('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {  
-  $('.preview').html(
-    $.cloudinary.image(data.result.public_id, 
-      { format: data.result.format, version: data.result.version, 
-        crop: 'fill', width: 150, height: 100 })
-  );    
-  $('.image_public_id').val(data.result.public_id);    
-  return true;
-});
-
 
 	function updateSoundSource(url) {
 
 		var fd = new FormData();
 		fd.append('source', url);
-		$.ajax({
+		Rails.ajax({
 			type: "PUT",
 			url: "/sounds/#{params[:id]}",
 			data: fd
@@ -62,7 +54,7 @@
 
 		var fd = new FormData();
 		fd.append('poster', url);
-		$.ajax({
+		Rails.ajax({
 			type: "PUT",
 			url: "/sounds/#{params[:id]}",
 			data: fd
