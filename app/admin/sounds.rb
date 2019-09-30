@@ -4,7 +4,6 @@ ActiveAdmin.register Sound do
   controller do
     def update
       update! do |format|
-        byebug
         if params[:par_ici].present?
           format.html { redirect_to upload_admin_sound_path }
         end

@@ -1,7 +1,21 @@
-<button id="upload_mp3" class="cloudinary-button">Upload mp3</button>
- <audio id="sound_preview"></audio>
-<button id="upload_poster" class="cloudinary-button">Upload image</button>
-<image id="preview" style="width:100px;"></image>
+<div class="section-upload">
+	<div class="row-upload">
+		<div class="button-upload">
+			<button id="upload_mp3" class="cloudinary-button">Upload mp3</button>
+		</div>
+		<div class="preview-upload">
+			<audio id="sound_audio" src="<%= resource.source unless resource.source.nil? %>" controls="true" controlsList="nodownload"></audio>
+		</div>
+	</div>
+	<div class="row-upload">
+		<div class="button-upload">
+			<button id="upload_poster" class="cloudinary-button">Upload image</button>
+		</div>
+		<div class="preview-upload">
+			<image id="sound_preview" src="<%= resource.poster unless resource.poster.nil? %>"></image>
+		</div>
+	</div>
+</div>
 
   
  
@@ -10,7 +24,7 @@
 
 
 
-<div style="display:none;">
+<div class="hidden-form">
 <%= semantic_form_for [:admin, Sound.find(params[:id])] do |f| %>
 		<%= hidden_field_tag :par_ici, value: true %>
 		<%= 	f.inputs do %>
@@ -30,7 +44,10 @@
 		cloudName: "dvhymcfm3", uploadPreset: "msg2xcck", folder: "radio_ulis/audio", multiple: false }, (error, result) => { 
 
 			if (result.info.url != null) {
-				//updateSoundSource(result.info.url);
+				console.log(result.info.url);
+				//$("#preview").attr('src', result.info.url);
+				$("#sound_source").val(result.info.url);
+				$("#edit_sound_34").submit();
 			}
 		});
 
@@ -47,7 +64,6 @@
 				$("#preview").attr('src', result.info.url);
 				$("#sound_poster").val(result.info.url);
 				$("#edit_sound_34").submit();
-
 			}
 		});
 

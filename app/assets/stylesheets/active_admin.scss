@@ -15,3 +15,16 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+.section-upload {
+	display: flex;
+	flex-direction: column;
+}
+.preview-upload > img {
+	width:100px;
+	height:auto;
+}
+
+.hidden-form {
+	display:none;
+}
