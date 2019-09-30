@@ -1,0 +1,9 @@
+<%= semantic_form_for [:admin, PlaylistSound.new] do |f| %>
+
+	<%= f.inputs do %>
+		<%= f.input :playlist_id, :label => 'Choix de la Playlist', :as => :select, :collection => Playlist.all.map{|u| ["#{u.title}", u.id]} %>
+		<%= f.input :sound_id, :label => 'Choix du Son', :as => :select, :collection => Sound.all.map{|u| ["#{u.title}", u.id]} %>
+		<%= f.input :order %>
+	<% end %>
+	<%= f.actions %>
+<% end %>

@@ -52,7 +52,7 @@
 				console.log(result.info.url);
 				//$("#preview").attr('src', result.info.url);
 				$("#sound_source").val(result.info.url);
-				$("#edit_sound_34").submit();
+				$('<%= "#edit_sound_#{params[:id]}" %>').submit();
 			}
 		});
 
@@ -68,7 +68,7 @@
 				console.log(result.info.url);
 				$("#preview").attr('src', result.info.url);
 				$("#sound_poster").val(result.info.url);
-				$("#edit_sound_34").submit();
+				$('<%= "#edit_sound_#{params[:id]}" %>').submit();
 			}
 		});
 
