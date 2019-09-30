@@ -15,6 +15,16 @@ ActiveAdmin.register PlaylistSound do
   #   permitted
   # end
 
-  
+  form do |f|
+    f.inputs do
+
+      f.input :playlist_id, :label => 'Choix de la Playlist', :as => :select, :collection => Playlist.all.map{|u| ["#{u.title}", u.id]}
+      f.input :sound_id, :label => 'Choix du Son', :as => :select, :collection => Sound.all.map{|u| ["#{u.title}", u.id]}
+      f.input :order, :label => 'Ordre dans la playlist', :as => :number
+    end
+    f.actions
+
+    render 'new'
+  end
   
 end

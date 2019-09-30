@@ -10,10 +10,6 @@ Rails.application.routes.draw do
 		get 'new', action: :new
 	end
 
- scope :ujs, defaults: { format: :ujs } do
-    patch 'update' => 'sounds#update'
-  end 
-
 	root to: 'playlists#index'
 
 end
