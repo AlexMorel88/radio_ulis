@@ -5,7 +5,7 @@
         <div class="row">
          <h2>Ulis de Lastvader</h2>
          <span h3><%= @playlists.count %> Playlists à découvrir </span>
-         <span h3>- <%= Sound.all.count %> Sons à écouter </span>
+         <span h3>- <%= Sound.all.count %> Émissions à écouter </span>
          <div class="col switchable__text">
           <ul class="accordion accordion-1" style="min-height: 0px;">
 
@@ -14,7 +14,7 @@
 
             <li>
               <div class="accordion__title">
-                <span class="h4"><%= play.title %> </span> - <span class="h5"><%= play.playlist_sound.count %> Émissions</span>
+                <span class="h4"><%= play.title %> </span><span class="h5"><%= " - "+play.playlist_sound.count.to_s %> Émissions</span>
               </div>
               <% play.playlist_sound.each do |play_list| %>
               <div class="accordion__content">
@@ -24,10 +24,10 @@
                       <h5><%= Sound.find(play_list.sound_id).title %></h5>
                     </div>
                     <div class="img-sound">
-                      <img src="https://res.cloudinary.com/dvhymcfm3/image/upload/v1569358661/radio_ulis/poster/product-small-7.jpg"></img>
+                      <img src="<%= Sound.find(play_list.sound_id).poster %>"></img>
                     </div>
                     <div class="play-sound">
-                      <%= image_tag('play_btn.svg', class: 'play-js', data: {source: url_audio(Sound.find(play_list.sound_id)) })  %>
+                      <%= image_tag('play_btn.svg', class: 'play-js', data: {source: Sound.find(play_list.sound_id).source })  %>
                     </div>
                   </div>
                 </div>
