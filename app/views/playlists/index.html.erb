@@ -14,20 +14,20 @@
 
             <li>
               <div class="accordion__title">
-                <span class="h4"><%= play.title %> </span><span class="h5"><%= " - "+play.playlist_sound.count.to_s %> Émissions</span>
+                <span class="h4"><%= play.title %> </span> - <span class="h5"><%=play.playlist_sound.count %> Émissions</span>
               </div>
               <% play.playlist_sound.each do |play_list| %>
               <div class="accordion__content">
                 <div class="section-sounds">
                   <div class="section-sound">
                     <div class="title-sound">
-                      <h5><%= Sound.find(play_list.sound_id).title %></h5>
+                      <h5><%= Sound.find(play_list.sound_id).title %> - <%= Sound.find(play_list.sound_id).author %> - Émission <%=play_list.order %></h5>
                     </div>
                     <div class="img-sound">
                       <img src="<%= Sound.find(play_list.sound_id).poster %>"></img>
                     </div>
                     <div class="play-sound">
-                      <%= image_tag('play_btn.svg', class: 'play-js', data: {source: Sound.find(play_list.sound_id).source })  %>
+                      <%= image_tag('play_btn.svg', class: 'play-js play--btn', data: {source: Sound.find(play_list.sound_id).source })  %>
                     </div>
                   </div>
                 </div>

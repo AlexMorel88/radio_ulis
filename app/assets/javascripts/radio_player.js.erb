@@ -2,19 +2,37 @@ document.addEventListener("turbolinks:load", function() {
     if (document.querySelector('#radio_player')) {
         configureRadioPLayerPage();
     }
-
-   });
+});
 
 function configureRadioPLayerPage() {
     var allBtnPlays = document.querySelectorAll('.play-js');
     var myRadioPlayer = document.querySelector('#radio_player').querySelector('audio');
-    allBtnPlays.forEach(function(playlist) {
+    var whatBtn = false;
+    var itsTimeToListening = true;
+    allBtnPlays.forEach(function(playlist, index) {
         playlist.addEventListener('click', function() {
-
-        	myRadioPlayer.src = playlist.getAttribute('data-source');
-        	myRadioPlayer.play();
-            
+            if (itsTimeToListening) {
+                itsTimeToListening = false;
+                playlist.src = "<%= asset_path('pause_btn') %>";
+                myRadioPlayer.src = playlist.getAttribute('data-source');
+                myRadioPlayer.play();
+            } else {
+                if (whatBtn == index) {
+                    if (myRadioPlayer.paused) {
+                        playlist.src = "<%= asset_path('pause_btn') %>";
+                        myRadioPlayer.play();
+                    } else {
+                        playlist.src = "<%= asset_path('play_btn') %>";
+                        myRadioPlayer.pause();
+                    }
+                } else {
+                    playlist.src = "<%= asset_path('pause_btn') %>";
+                    allBtnPlays[whatBtn].src = "<%= asset_path('play_btn') %>";
+                    myRadioPlayer.src = playlist.getAttribute('data-source');
+                    myRadioPlayer.play();
+                }
+            }
+            whatBtn = index;
         });
     });
-    
 }
