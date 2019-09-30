@@ -1,10 +1,15 @@
 <div class="section-upload">
 	<div class="row-upload">
+		<div class="title-upload">
+			<h3><%= resource.title %></h3>
+		</div>
+	</div>
+	<div class="row-upload">
 		<div class="button-upload">
 			<button id="upload_mp3" class="cloudinary-button">Upload mp3</button>
 		</div>
 		<div class="preview-upload">
-			<audio id="sound_audio" src="<%= resource.source unless resource.source.nil? %>" controls="true" controlsList="nodownload"></audio>
+			<audio id="sound_audio" src="<%= resource.source unless resource.source.nil? %>" controls="true"></audio>
 		</div>
 	</div>
 	<div class="row-upload">

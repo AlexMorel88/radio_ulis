@@ -19,6 +19,8 @@
 .section-upload {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items:center;
 }
 .preview-upload > img {
 	width:100px;
@@ -27,4 +29,23 @@
 
 .hidden-form {
 	display:none;
+}
+
+.row-upload {
+	display:flex;
+	flex-direction:row;
+	align-items: center;
+	justify-content:center;
+}
+
+.row-upload > div {
+	margin:15px;
+
+}
+
+.button-upload, .preview-upload {
+	width: 300px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
 }
