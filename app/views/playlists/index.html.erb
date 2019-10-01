@@ -27,7 +27,7 @@
                       <img src="<%= Sound.find(play_list.sound_id).poster %>"></img>
                     </div>
                     <div class="play-sound">
-                      <%= image_tag('play_btn.svg', class: 'play-js play--btn', data: {source: Sound.find(play_list.sound_id).source })  %>
+                      <%= image_tag('play_btn.svg', class: 'play-js play--btn', data: { source: Sound.find(play_list.sound_id).source, poster: Sound.find(play_list.sound_id).poster, title: "#{Sound.find(play_list.sound_id).title} - #{Sound.find(play_list.sound_id).author} - Émission #{play_list.order}" })  %>
                     </div>
                     <div class="like-my-sound">
                         <%= render 'like', sound: Sound.find(play_list.sound_id) %> 

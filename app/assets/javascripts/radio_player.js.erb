@@ -10,26 +10,33 @@ function configureRadioPLayerPage() {
     var myRadioPlayer = document.querySelector('#radio_player').querySelector('audio');
     var whatBtn = false;
     var itsTimeToListening = true;
+    var photoPlayer = document.querySelector('#photo-player');
+    var titlePlayer = document.querySelector('#title-js');
+
     allBtnPlays.forEach(function(playlist, index) {
         playlist.addEventListener('click', function() {
             if (itsTimeToListening) {
                 itsTimeToListening = false;
                 playlist.src = "<%= asset_path('pause_btn') %>";
                 myRadioPlayer.src = playlist.getAttribute('data-source');
+                photoPlayer.src = playlist.getAttribute('data-poster');
+                titlePlayer.textContent = playlist.getAttribute('data-title');
                 myRadioPlayer.play();
             } else {
                 if (whatBtn == index) {
-                    if (myRadioPlayer.paused) {
-                        playlist.src = "<%= asset_path('pause_btn') %>";
-                        myRadioPlayer.play();
-                    } else {
-                        playlist.src = "<%= asset_path('play_btn') %>";
-                        myRadioPlayer.pause();
-                    }
+                    //if (myRadioPlayer.paused) {
+                        //playlist.src = "<%= asset_path('pause_btn') %>";
+                        //myRadioPlayer.play();
+                    //} else {
+                        //playlist.src = "<%= asset_path('play_btn') %>";
+                        //myRadioPlayer.pause();
+                    //}
                 } else {
                     playlist.src = "<%= asset_path('pause_btn') %>";
                     allBtnPlays[whatBtn].src = "<%= asset_path('play_btn') %>";
                     myRadioPlayer.src = playlist.getAttribute('data-source');
+                    photoPlayer.src = playlist.getAttribute('data-poster');
+                    titlePlayer.textContent = playlist.getAttribute('data-title');
                     myRadioPlayer.play();
                 }
             }
