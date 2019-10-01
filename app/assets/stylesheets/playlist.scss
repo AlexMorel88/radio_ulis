@@ -1,70 +1,60 @@
-
-
 .playlists {
-
-
-	.section-playlists {
-
-		display:flex;
-		flex-direction:column;
-		justify-content:center;
-		align-items:center;
-
-
-	}
-	.section-sounds {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction:column;
-		width:100%;
-
-	}
-
-	.section-sounds > div {
-		margin-top:5px;
-		margin-bottom: 5px;
-	}
-	
-
-	.section-sound {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		flex-direction:row;
-
-	}
-
-	.title-sound {
-		width:400px;
-	}
-
-	.img-sound > img {
-		height:50px;
-	}
-	.play-sound > img {
-		height:40px;
-		cursor: pointer;
-		&:hover {
-			filter:grayscale(100);
-		}
-	}
-
-	.accordion__content {
-
-		margin-left: 15px;
-		margin-right: 15px;
-	}
-
-	.play_btn_toogle {
-		background-image: url(asset_path("play_btn.svg"));
-	}
-
-	.pause_btn_toogle {
-		background-image: url(asset_path("pause_btn.svg"));
-	}
-
-	.hidden--btn {
-		display:none;
-	}
+    .section-playlists {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .section-sounds {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .section-sounds>div {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .section-sound {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    .like-my-sound {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+    }
+    .like-count-js {
+        width: 15px;
+    }
+    .title-sound {
+        width: 400px;
+    }
+    .img-sound>img {
+        height: 50px;
+    }
+    .play-sound>img {
+        height: 40px;
+        cursor: pointer;
+        &:hover {
+            filter: grayscale(100);
+        }
+    }
+    .accordion__content {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .play_btn_toogle {
+        background-image: url(asset_path("play_btn.svg"));
+    }
+    .pause_btn_toogle {
+        background-image: url(asset_path("pause_btn.svg"));
+    }
+    .hidden--btn {
+        display: none;
+    }
 }

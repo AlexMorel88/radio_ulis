@@ -29,6 +29,10 @@
                     <div class="play-sound">
                       <%= image_tag('play_btn.svg', class: 'play-js play--btn', data: {source: Sound.find(play_list.sound_id).source })  %>
                     </div>
+                    <div class="like-my-sound">
+                        <%= render 'like', sound: Sound.find(play_list.sound_id) %> 
+                        <div class="like-count-js"><%= Sound.find(play_list.sound_id).like %></div>
+                      </div>
                   </div>
                 </div>
 

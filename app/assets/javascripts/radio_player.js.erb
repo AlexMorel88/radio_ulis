@@ -1,6 +1,7 @@
 document.addEventListener("turbolinks:load", function() {
     if (document.querySelector('#radio_player')) {
         configureRadioPLayerPage();
+        countLikeClickButton();
     }
 });
 
@@ -35,4 +36,25 @@ function configureRadioPLayerPage() {
             whatBtn = index;
         });
     });
+}
+
+
+function countLikeClickButton() {
+
+      var allBtnLikes = document.querySelectorAll('.like-btn-js');
+       allBtnLikes.forEach(function(like, index) {
+        like.addEventListener('click', function() {
+
+            var likeCounter = document.querySelectorAll('.like-count-js')[index];
+            var counter = likeCounter.textContent;
+            likeCounter.textContent = parseInt(counter)+1;
+            like.disabled = true;
+
+
+        });
+    });
+
+   
+
+    
 }
