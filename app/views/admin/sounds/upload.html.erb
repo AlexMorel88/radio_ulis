@@ -1,16 +1,58 @@
-<button id="upload_mp3" class="cloudinary-button">Upload mp3</button>
-<button id="upload_poster" class="cloudinary-button">Upload image</button>
+<div class="section-upload">
+	<div class="row-upload">
+		<div class="title-upload">
+			<h3><%= resource.title %></h3>
+		</div>
+	</div>
+	<div class="row-upload">
+		<div class="button-upload">
+			<button id="upload_mp3" class="cloudinary-button">Upload mp3</button>
+		</div>
+		<div class="preview-upload">
+			<audio id="sound_audio" src="<%= resource.source unless resource.source.nil? %>" controls="true"></audio>
+		</div>
+	</div>
+	<div class="row-upload">
+		<div class="button-upload">
+			<button id="upload_poster" class="cloudinary-button">Upload image</button>
+		</div>
+		<div class="preview-upload">
+			<image id="sound_preview" src="<%= resource.poster unless resource.poster.nil? %>"></image>
+		</div>
+	</div>
+</div>
+
+  
+ 
 
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 
 
 
+<div class="hidden-form">
+<%= semantic_form_for [:admin, Sound.find(params[:id])] do |f| %>
+		<%= hidden_field_tag :par_ici, value: true %>
+		<%= 	f.inputs do %>
+		<%= 	f.input :poster %>
+		<%= 	f.input :source %>
+
+	<% end %>
+	<%= f.actions %>
+	
+	
+<% end %>
+</div>
+
+
 <script type="text/javascript">  
 	var mp3_widget = cloudinary.createUploadWidget({ 
-		cloudName: "dvhymcfm3", uploadPreset: "msg2xcck", folder: "radio_ulis/audio" }, (error, result) => { 
+		cloudName: "dvhymcfm3", uploadPreset: "msg2xcck", folder: "radio_ulis/audio", multiple: false }, (error, result) => { 
 
 			if (result.info.url != null) {
-				//updateSoundSource(result.info.url);
+				console.log(result.info.url);
+				//$("#preview").attr('src', result.info.url);
+				$("#sound_source").val(result.info.url);
+				$('<%= "#edit_sound_#{params[:id]}" %>').submit();
 			}
 		});
 
@@ -20,13 +62,13 @@
 	}, false);
 
 	var poster_widget = cloudinary.createUploadWidget({ 
-		cloudName: "dvhymcfm3", uploadPreset: "msg2xcck", folder: "radio_ulis/poster" }, (error, result) => { 
+		cloudName: "dvhymcfm3", uploadPreset: "msg2xcck", folder: "radio_ulis/poster", multiple: false }, (error, result) => { 
 
 			if (result.info.url != null) {
-
-				//var myform = document.getElementById("myform");
-
-				//(result.info.url);
+				console.log(result.info.url);
+				$("#preview").attr('src', result.info.url);
+				$("#sound_poster").val(result.info.url);
+				$('<%= "#edit_sound_#{params[:id]}" %>').submit();
 			}
 		});
 
@@ -35,22 +77,12 @@
 		poster_widget.open();
 	}, false);
 
-	$('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {  
-  $('.preview').html(
-    $.cloudinary.image(data.result.public_id, 
-      { format: data.result.format, version: data.result.version, 
-        crop: 'fill', width: 150, height: 100 })
-  );    
-  $('.image_public_id').val(data.result.public_id);    
-  return true;
-});
-
 
 	function updateSoundSource(url) {
 
 		var fd = new FormData();
 		fd.append('source', url);
-		$.ajax({
+		Rails.ajax({
 			type: "PUT",
 			url: "/sounds/#{params[:id]}",
 			data: fd
@@ -62,7 +94,7 @@
 
 		var fd = new FormData();
 		fd.append('poster', url);
-		$.ajax({
+		Rails.ajax({
 			type: "PUT",
 			url: "/sounds/#{params[:id]}",
 			data: fd
@@ -74,10 +106,20 @@
 
 
 		$.ajax({
-			type: "POST",
-			url: "/sounds/34",
-			success: function(data) {
-				console.log(data);
+			type: 'PATCH',
+			dataType: 'json',
+			accept: 'json',
+			path: '34',
+			data: {
+				source: url
+			},
+			beforeSend: (xhr, options) => {
+				xhr.setRequestHeader('Content-Type', 'application/json')
+				return true
+			},
+			success: (response) => {
+			},
+			failure: (response) => {
 			}
 		});
 	}

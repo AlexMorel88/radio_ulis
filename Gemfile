@@ -39,6 +39,9 @@ gem 'figaro'
 gem 'cloudinary'
 
 gem 'jquery-rails'
+gem 'jquery-slick-rails', '~> 1.9.0'
+gem 'sassc-rails'
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 
 
 # Reduces boot times through caching; required in config/boot.rb

@@ -1,20 +1,67 @@
 document.addEventListener("turbolinks:load", function() {
     if (document.querySelector('#radio_player')) {
         configureRadioPLayerPage();
+        countLikeClickButton();
     }
-
-   });
+});
 
 function configureRadioPLayerPage() {
     var allBtnPlays = document.querySelectorAll('.play-js');
     var myRadioPlayer = document.querySelector('#radio_player').querySelector('audio');
-    allBtnPlays.forEach(function(playlist) {
-        playlist.addEventListener('click', function() {
+    var whatBtn = false;
+    var itsTimeToListening = true;
+    var photoPlayer = document.querySelector('#photo-player');
+    var titlePlayer = document.querySelector('#title-js');
 
-        	myRadioPlayer.src = playlist.getAttribute('data-source');
-        	myRadioPlayer.play();
-            
+    allBtnPlays.forEach(function(playlist, index) {
+        playlist.addEventListener('click', function() {
+            if (itsTimeToListening) {
+                itsTimeToListening = false;
+                playlist.src = "<%= asset_path('pause_btn') %>";
+                myRadioPlayer.src = playlist.getAttribute('data-source');
+                photoPlayer.src = playlist.getAttribute('data-poster');
+                titlePlayer.textContent = playlist.getAttribute('data-title');
+                myRadioPlayer.play();
+            } else {
+                if (whatBtn == index) {
+                    //if (myRadioPlayer.paused) {
+                        //playlist.src = "<%= asset_path('pause_btn') %>";
+                        //myRadioPlayer.play();
+                    //} else {
+                        //playlist.src = "<%= asset_path('play_btn') %>";
+                        //myRadioPlayer.pause();
+                    //}
+                } else {
+                    playlist.src = "<%= asset_path('pause_btn') %>";
+                    allBtnPlays[whatBtn].src = "<%= asset_path('play_btn') %>";
+                    myRadioPlayer.src = playlist.getAttribute('data-source');
+                    photoPlayer.src = playlist.getAttribute('data-poster');
+                    titlePlayer.textContent = playlist.getAttribute('data-title');
+                    myRadioPlayer.play();
+                }
+            }
+            whatBtn = index;
         });
     });
+}
+
+
+function countLikeClickButton() {
+
+      var allBtnLikes = document.querySelectorAll('.like-btn-js');
+       allBtnLikes.forEach(function(like, index) {
+        like.addEventListener('click', function() {
+
+            var likeCounter = document.querySelectorAll('.like-count-js')[index];
+            var counter = likeCounter.textContent;
+            likeCounter.textContent = parseInt(counter)+1;
+            like.disabled = true;
+
+
+        });
+    });
+
+   
+
     
 }

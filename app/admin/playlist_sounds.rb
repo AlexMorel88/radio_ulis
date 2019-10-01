@@ -5,7 +5,7 @@ ActiveAdmin.register PlaylistSound do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :playlist_id, :sound_id
+  permit_params :playlist_id, :sound_id, :order
   #
   # or
   #
@@ -20,9 +20,11 @@ ActiveAdmin.register PlaylistSound do
 
       f.input :playlist_id, :label => 'Choix de la Playlist', :as => :select, :collection => Playlist.all.map{|u| ["#{u.title}", u.id]}
       f.input :sound_id, :label => 'Choix du Son', :as => :select, :collection => Sound.all.map{|u| ["#{u.title}", u.id]}
-
+      f.input :order, :label => 'Ordre dans la playlist', :as => :number
     end
     f.actions
+
+    render 'new'
   end
   
 end

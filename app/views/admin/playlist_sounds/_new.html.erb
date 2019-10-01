@@ -1,0 +1,49 @@
+
+<h2>Actuellement en ligne</h2>
+<table style="text-align:left; width:33%;">
+	<% Playlist.all.each do |playlist| %>
+	<thread>
+		<tr>
+			<th>
+				<h4><%= playlist.title %></h4>
+			</th>
+			<th>
+				titre
+			</th>
+			<th>
+				position
+			</th>
+		</tr>
+	</thread>
+	<% playlist.playlist_sound.each do |play_sound| %>
+	<tbody>
+		<tr>
+			<td></td>
+			<td>
+				<%= Sound.find(play_sound.sound_id).title %>
+			</td>
+			<td>
+				<%= play_sound.order %>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>	
+	</tbody>
+	<% end %>
+	<% end %>
+</table>
+
+<style>
+
+	form fieldset.inputs {
+		width:33%;
+	}
+	label, select {
+		width:200px!important;
+	}
+	input {
+		width:55px!important;
+	}
+
+
+</style>

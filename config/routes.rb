@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 		get 'index', action: :index
 	end
 
+	resources :sounds do
+		get 'new', action: :new
+	end
+
 	root to: 'playlists#index'
 
 end
