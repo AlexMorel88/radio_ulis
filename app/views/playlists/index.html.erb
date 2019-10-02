@@ -32,6 +32,13 @@
                     <div class="like-my-sound">
                         <%= render 'like', sound: Sound.find(play_list.sound_id) %> 
                         <div class="like-count-js"><%= Sound.find(play_list.sound_id).like %></div>
+
+                      </div>
+                      <div class="listening-my-sound">
+                        <%= render 'listening', sound: Sound.find(play_list.sound_id) %> 
+                        <%= image_tag('radio2.gif', class: 'radio-gif') %>
+                        <div class="listening-count-js">x <%= Sound.find(play_list.sound_id).listening %></div>
+                        
                       </div>
                   </div>
                 </div>

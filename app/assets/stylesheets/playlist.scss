@@ -27,22 +27,46 @@
         align-items: center;
         justify-content: center;
         font-size: 18px;
+        width:90px;
+    }
+    .listening-my-sound > img {
+        margin:0;
+    }
+    .listening-my-sound {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        width:90px;
     }
     .like-count-js {
         width: 15px;
     }
+     
     .title-sound {
         width: 400px;
     }
     .img-sound>img {
         height: 50px;
     }
+    .play-sound {
+        width: 90px;
+    }
+    .img-sound {
+        width:90px;
+    }
+    
     .play-sound>img {
         height: 40px;
         cursor: pointer;
         &:hover {
             filter: grayscale(100);
         }
+    }
+
+    .radio-gif {
+
+        width:50px;
     }
     .accordion__content {
         margin-left: 15px;

@@ -22,6 +22,15 @@ function configureRadioPLayerPage() {
                 photoPlayer.src = playlist.getAttribute('data-poster');
                 titlePlayer.textContent = playlist.getAttribute('data-title');
                 myRadioPlayer.play();
+            var listeningCounter = document.querySelectorAll('.listening-count-js')[index];
+            var formListening = document.querySelectorAll('.form-listening-js')[index];
+            var listCount = listeningCounter.textContent.replace('x ','');
+            console.log(listCount);
+            console.log(parseInt(listCount)+1);
+            listeningCounter.textContent = parseInt(listCount)+1;
+            formListening.submit();
+                
+        
             } else {
                 if (whatBtn == index) {
                     //if (myRadioPlayer.paused) {
@@ -38,6 +47,13 @@ function configureRadioPLayerPage() {
                     photoPlayer.src = playlist.getAttribute('data-poster');
                     titlePlayer.textContent = playlist.getAttribute('data-title');
                     myRadioPlayer.play();
+                    var listeningCounter = document.querySelectorAll('.listening-count-js')[index];
+            var formListening = document.querySelectorAll('.form-listening-js')[index];
+            var listCount = listeningCounter.textContent.replace('x ','');
+            console.log(listCount);
+            console.log(parseInt(listCount)+1);
+            listeningCounter.textContent = parseInt(listCount)+1;
+            formListening.submit();
                 }
             }
             whatBtn = index;
@@ -48,14 +64,17 @@ function configureRadioPLayerPage() {
 
 function countLikeClickButton() {
 
-      var allBtnLikes = document.querySelectorAll('.like-btn-js');
+      var allBtnLikes = document.querySelectorAll('#like-btn-js');
        allBtnLikes.forEach(function(like, index) {
         like.addEventListener('click', function() {
 
             var likeCounter = document.querySelectorAll('.like-count-js')[index];
+            var formLike = document.querySelectorAll('.form-like-js')[index];
             var counter = likeCounter.textContent;
             likeCounter.textContent = parseInt(counter)+1;
+            formLike.submit();
             like.disabled = true;
+
 
 
         });
