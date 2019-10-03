@@ -1,0 +1,26 @@
+<div class="accordion__content">
+  <div class="section-sounds">
+    <div class="section-sound">
+      <div class="title-sound">
+        <h5><%= Sound.find(play_list.sound_id).title %> - <%= Sound.find(play_list.sound_id).author %> - Émission <%=play_list.order %></h5>
+      </div>
+      <div class="img-sound">
+        <img src="<%= Sound.find(play_list.sound_id).poster %>"></img>
+      </div>
+      <div class="play-sound">
+        <%= image_tag('play_btn.svg', class: 'play-js play--btn', data: { source: Sound.find(play_list.sound_id).source, poster: Sound.find(play_list.sound_id).poster, title: "#{Sound.find(play_list.sound_id).title} - #{Sound.find(play_list.sound_id).author} - Émission #{play_list.order}" })  %>
+      </div>
+      <div class="like-my-sound">
+        <%= render 'like', sound: Sound.find(play_list.sound_id) %> 
+        <div class="like-count-js"><%= Sound.find(play_list.sound_id).like %></div>
+
+      </div>
+      <div class="listening-my-sound">
+        <%= render 'listening', sound: Sound.find(play_list.sound_id) %> 
+        <%= image_tag('radio2.gif', class: 'radio-gif') %>
+        <div class="listening-count-js">x <%= Sound.find(play_list.sound_id).listening %></div>
+        
+      </div>
+    </div>
+  </div>
+</div>

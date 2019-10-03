@@ -3,60 +3,49 @@
     <section class="switchable ">
       <div class="container">
         <div class="row">
-         <h2>Ulis de Lastvader</h2>
-         <span h3><%= @playlists.count %> Playlists à découvrir </span>
-         <span h3>- <%= Sound.all.count %> Émissions à écouter </span>
+         <h2>Radio Ulis</h2>
+         <h4> La radio pour apprendre autrement</h4>
+         <span><%= @playlists.count %> Playlists à découvrir </span>
+         <span>- <%= Sound.all.count %> Émissions à écouter </span>
+         <div>
+          <%= link_to '2019/2020', playlists_path, remote:false   %>
+          <%= link_to '2018/2019', playlists_path(year:"2018"), remote:false  %>
+
+         </div> 
          <div class="col switchable__text">
           <ul class="accordion accordion-1" style="min-height: 0px;">
 
             <% @playlists.each do |play| %>
 
-
             <li>
               <div class="accordion__title">
-                <span class="h4"><%= play.title %> </span> - <span class="h5"><%=play.playlist_sound.count %> Émissions</span>
+                 <% if params[:year] == "2018" %>
+                <span class="h4"><%= play.title %> </span> - <span class="h5"><%=play.playlist_sound.where(year:"2018/2019").count %> Émissions</span>
+                 <% else %>
+                 <span class="h4"><%= play.title %> </span> - <span class="h5"><%=play.playlist_sound.where(year:"2019/2020").count %> Émissions</span>
+
+                 <% end %>
               </div>
+
               <% play.playlist_sound.each do |play_list| %>
-              <div class="accordion__content">
-                <div class="section-sounds">
-                  <div class="section-sound">
-                    <div class="title-sound">
-                      <h5><%= Sound.find(play_list.sound_id).title %> - <%= Sound.find(play_list.sound_id).author %> - Émission <%=play_list.order %></h5>
-                    </div>
-                    <div class="img-sound">
-                      <img src="<%= Sound.find(play_list.sound_id).poster %>"></img>
-                    </div>
-                    <div class="play-sound">
-                      <%= image_tag('play_btn.svg', class: 'play-js play--btn', data: { source: Sound.find(play_list.sound_id).source, poster: Sound.find(play_list.sound_id).poster, title: "#{Sound.find(play_list.sound_id).title} - #{Sound.find(play_list.sound_id).author} - Émission #{play_list.order}" })  %>
-                    </div>
-                    <div class="like-my-sound">
-                        <%= render 'like', sound: Sound.find(play_list.sound_id) %> 
-                        <div class="like-count-js"><%= Sound.find(play_list.sound_id).like %></div>
+              <% if play_list.year == "2018/2019" && params[:year] == "2018" %>
+              <%= render 'sound', play_list: play_list %>
+              <% else %>
 
-                      </div>
-                      <div class="listening-my-sound">
-                        <%= render 'listening', sound: Sound.find(play_list.sound_id) %> 
-                        <%= image_tag('radio2.gif', class: 'radio-gif') %>
-                        <div class="listening-count-js">x <%= Sound.find(play_list.sound_id).listening %></div>
-                        
-                      </div>
-                  </div>
-                </div>
+              <%= render 'sound', play_list: play_list %>
 
-              </div>
               <% end %>
+
+              <% end %>
+
             </li>
             <% end %>
-
           </ul>
-
         </div>
-
       </div>
-
     </div>
-
   </section>
 </div>
 </div>
+
 <%= render 'shared/player' %>

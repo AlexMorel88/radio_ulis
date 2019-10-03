@@ -1,35 +1,36 @@
 .radio-player-ulis {
-
-	position: fixed;
-	bottom:0;
-	width:100%;
-	height:115px;
-	padding:10px;
-	background-color: white;
-	    box-shadow: 2px -1px 4px 0px black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 115px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 2px -1px 4px 0px black;
 }
-
 .audio-player {
-	width:75%;
-} 
-.audio-player > audio {
-
-	width:100%;
-
-	&:focus {
-
-		border:none!important;
-	}
+    width: 70%;
 }
-
+.flex-player > div {
+	margin-left:5px;
+	margin-right:5px;
+}
+.audio-player>audio {
+    width: 100%;
+}
 .flex-player {
-	display:flex;
-	align-items: center;
-	
-
-	
+    display: flex;
+    align-items: center;
+}
+.photo {
+    height: 100px;
 }
 
-.photo {
-	height:100px;
+.photo-player-section {
+
+	width:150px;
+}
+
+.name-sound {
+
+	max-width:200px;
 }
