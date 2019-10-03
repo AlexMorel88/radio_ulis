@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_01_195348) do
+ActiveRecord::Schema.define(version: 2019_10_03_102233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2019_10_01_195348) do
     t.datetime "updated_at", null: false
     t.bigint "sound_id"
     t.integer "order"
+    t.string "year", default: "2019/2020"
     t.index ["playlist_id"], name: "index_playlist_sounds_on_playlist_id"
     t.index ["sound_id"], name: "index_playlist_sounds_on_sound_id"
   end

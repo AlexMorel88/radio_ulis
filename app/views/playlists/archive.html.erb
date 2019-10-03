@@ -7,13 +7,10 @@
          <h4> La radio pour apprendre autrement</h4>
          <span><%= @playlists.count %> Playlists à découvrir </span>
          <span>- <%= Sound.all.count %> Émissions à écouter </span>
-         <div data-turbolinks="false" class="links-archive">
-          <div>
+          <div data-turbolinks="false" class="links-archive">
+
           <%= link_to '2019/2020', playlists_path   %>
-        </div>
-        <div>
           <%= link_to '2018/2019', playlists_archive_path  %>
-        </div>
 
          </div> 
          <div class="col switchable__text">
@@ -24,12 +21,12 @@
             <li>
               <div class="accordion__title">
                  
-                <span class="h4"><%= play.title %> </span> - <span class="h5"><%=play.playlist_sound.where(year:"2019/2020").count %> Émissions</span>
+                <span class="h4"><%= play.title %> </span> - <span class="h5"><%=play.playlist_sound.where(year:"2018/2019").count %> Émissions</span>
                 
               </div>
 
               <% play.playlist_sound.each do |play_list| %>
-              <% if play_list.year == "2019/2020" %>
+              <% if play_list.year == "2018/2019" %>
               <%= render 'sound', play_list: play_list %>
               <% end %>
 

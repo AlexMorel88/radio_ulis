@@ -1,0 +1,11 @@
+<%= form_with scope: :sound, url: sound_path(sound), method: :put, data: {remote:true}, class:'form-listening-js' do |f| %>
+    
+ 
+        <%= f.hidden_field :click_listening, value: true %>
+      
+
+     
+ 
+
+
+  <% end %>

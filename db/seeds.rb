@@ -1,4 +1,4 @@
-AdminUser.create!(email: 'jonathan.degois@gmail.com', password: 'Lastvader88', password_confirmation: 'Lastvader88')
+#AdminUser.create!(email: 'jonathan.degois@gmail.com', password: 'Lastvader88', password_confirmation: 'Lastvader88')
 
 
 PlaylistSound.destroy_all
