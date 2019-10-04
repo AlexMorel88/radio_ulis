@@ -16,6 +16,7 @@
 		</tr>
 	</thread>
 	<% playlist.playlist_sound.each do |play_sound| %>
+	<% if play_sound.year == "2019/2020" %>
 	<tbody>
 		<tr>
 			<td></td>
@@ -27,8 +28,8 @@
 			</td>
 		</tr>
 	</tbody>
-	<tbody>	
-	</tbody>
+	
+	<% end %>
 	<% end %>
 	<% end %>
 </table>
