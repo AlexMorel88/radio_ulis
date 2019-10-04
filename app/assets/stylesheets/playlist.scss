@@ -85,7 +85,13 @@
 
     .links-archive {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         width:300px;
+    }
+
+    .index-sub-menu {
+        display: flex;
+        justify-content: space-between;
+
     }
 }
