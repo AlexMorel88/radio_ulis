@@ -1,16 +1,14 @@
+<%= render 'cover' %>
+
 <div class="section-playlists">
   <div class="tab__content">
     <section class="switchable ">
       <div class="container">
         <div class="row">
-         <h2>Radio Ulis</h2>
-         <h4> La radio pour apprendre autrement</h4>
          <div class="index-sub-menu">
-         <span><%= @playlists.count %> Playlists à découvrir </span>
-         <span><%= Sound.all.count %> Émissions à écouter </span>
           <div data-turbolinks="false" class="links-archive">
 
-          <%= link_to '2019/2020', playlists_path   %>
+          <%= link_to 'Actuellement', playlists_path   %>
           
 
          </div> 

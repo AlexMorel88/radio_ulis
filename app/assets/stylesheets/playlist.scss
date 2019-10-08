@@ -4,6 +4,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding-bottom: 50px;
     }
     .section-sounds {
         display: flex;
@@ -91,7 +92,14 @@
 
     .index-sub-menu {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
 
+    }
+
+    .accordion__title {
+        height:50px;
+        border-color: #62938d!important;
+        background: #62938d!important;
+        opacity:1!important;
     }
 }
