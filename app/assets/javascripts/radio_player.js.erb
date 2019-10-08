@@ -3,6 +3,7 @@ document.addEventListener("turbolinks:load", function() {
         configureRadioPLayerPage();
         countLikeClickButton();
         listeningMyPlayerAudio();
+        var current_sound;
     }
 });
 
@@ -15,8 +16,10 @@ function configureRadioPLayerPage() {
     var titlePlayer = document.querySelector('#title-js');
     allBtnPlays.forEach(function(playlist, index) {
         playlist.addEventListener('click', function() {
+             current_sound = playlist;
             if (itsTimeToListening) {
                 itsTimeToListening = false;
+               
                 playlist.src = "<%= asset_path('pause_btn') %>";
                 myRadioPlayer.src = playlist.getAttribute('data-source');
                 photoPlayer.src = playlist.getAttribute('data-poster');
@@ -32,10 +35,10 @@ function configureRadioPLayerPage() {
             } else {
                 if (whatBtn == index) {
                     if (myRadioPlayer.paused) {
-                    playlist.src = "<%= asset_path('pause_btn') %>";
+                    //playlist.src = "<%= asset_path('pause_btn') %>";
                     myRadioPlayer.play();
                     } else {
-                    playlist.src = "<%= asset_path('play_btn') %>";
+                    //playlist.src = "<%= asset_path('play_btn') %>";
                     myRadioPlayer.pause();
                     }
                 } else {
@@ -79,12 +82,12 @@ function listeningMyPlayerAudio() {
 
     var v = document.getElementsByTagName("audio")[0];
     v.addEventListener("play", function() { 
-        console.log("playyyyyyy");
+        current_sound.src = "<%= asset_path('pause_btn') %>";
 
     }, true);
 
      v.addEventListener("pause", function() { 
-        console.log("pauuuuuuse");
+        current_sound.src = "<%= asset_path('play_btn') %>";
 
     }, true);
 }
