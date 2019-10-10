@@ -1,11 +1,9 @@
-<section class="imagebg height-85 image--light cover cover-blocks bg--secondary ">
+<section class="imagebg height-90 image--light cover cover-blocks bg--secondary ">
 	<div class="background-image-holder hidden-xs" style="opacity: 1;">
 		<img alt="background" src="https://res.cloudinary.com/dvhymcfm3/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1570567492/radio_ulis/resources/nounours.jpg">
 	</div>
 	<div class="container-text-section">
-		<div class="row">
-			<div class="col-sm-3 col-md-3 ">
-				<div>
+    
 					<h1>La tête dans les étoiles</h1>
 					<p class="lead">
 						La radio pour apprendre autrement
@@ -19,14 +17,10 @@
 						<%= Sound.last.title %> - <%= Sound.last.author %> - Émission <%= Sound.last.playlist_sound.order %>
 
 						<div class="photo-player-section">
-			<img  class="photo" src="<%= Sound.last.poster %>"></img>
-		</div>
+							<img  class="photo" src="<%= Sound.last.poster %>"></img>
+						</div>
 						
-					</p>
-				</div>
-			</div>
-		</div>
-		<!--end of row-->
+					</p>			
 	</div>
-	<!--end of container-->
 </section>
+
