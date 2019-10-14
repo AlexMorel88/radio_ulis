@@ -5,14 +5,14 @@
     height: 15vh;
     background-color: white;
     box-shadow: 2px -1px 4px 0px black;
-    height:100px;
+    height: 100px;
     background: #62938d !important;
 }
 .audio-player {
     width: 70%;
 }
-.flex-player > div {
-	margin-right:15px;
+.flex-player>div {
+    margin-right: 15px;
     display: flex;
     align-items: center;
 }
@@ -26,33 +26,52 @@
 .photo {
     height: 100px;
 }
-
 .photo-player-section {
-
-	height:100%;
+    height: 100%;
 }
-
 .name-sound {
-
-	max-width:200px;
-    color:black;
+    max-width: 200px;
+    color: black;
 }
-
 .container-text-section {
-
     position: relative;
-        z-index: 2;
-        display:flex;
-        flex-direction:column;
-        align-items: flex-start;
-        margin-left:50px;
-        max-width:20%;
-
-       
-        
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 50px;
+    max-width: 20%;
 }
-
 .une-title {
+    font-weight: bold;
+}
+@media (min-height: 820px) {
+    .container-text-section {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+        background-color: white;
+        font-size: 2rem;
+        padding: 15px;
+        text-align: center;
+        margin: 0% 20% 0% 20%;
+    }
 
-    font-weight:bold;
+     .container-text-section > p {
+
+        font-size:3rem;
+        line-height: 3.5rem;
+     }
+
+     .section-playlists {
+
+        font-size:3rem;
+     }
+
+      .accordion-1 li .accordion__title {
+        height: 150px;
+    }
 }
