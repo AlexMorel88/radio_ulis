@@ -55,9 +55,13 @@
         max-width: 100%;
         background-color: white;
         font-size: 2rem;
-        padding: 15px;
+        padding: 3rem;
         text-align: center;
         margin: 0% 20% 0% 20%;
+    }
+
+    .index-sub-menu {
+       margin-bottom: 3rem;
     }
 
      .container-text-section > p {
@@ -74,4 +78,112 @@
       .accordion-1 li .accordion__title {
         height: 150px;
     }
+
+    .accordion li.active .accordion__content {
+        //height:100vh;
+        max-height: 100vh!important;
+
+    }
+    .accordion li.active {
+
+        //height: 100vh;
+    }
+
+    .playlists .section-sound {
+
+        flex-direction:column!important;
+    }
+
+    .playlists .title-sound {
+        width:100%!important;
+    }
+
+    .playlists .img-sound {
+        width: 100%!important;
+
+    }
+
+     .playlists .img-sound > img {
+        height:unset!important;
+     }
+
+     .playlists .play-sound {
+        width:100%!important;
+     }
+
+     .playlists .play-sound > img {
+        height:unset!important;
+        max-width:unset!important;
+        width:33%;
+    
+    }
+
+    .playlists .like-my-sound {
+
+        width:100%!important;
+        height:10vh!important;
+
+    }
+
+    .playlists .like-my-sound > form {
+        height:100%!important;
+        max-width:unset!important;
+        //width:33%;
+    
+    }
+
+    .playlists .like-my-sound > form > input {
+
+        height:100%!important;
+
+    }
+
+    .playlists .like-count-js {
+
+        font-size: 5rem;
+    }
+
+     .playlists .listening-my-sound {
+
+        width:100%!important;
+        height:10vh!important;
+
+    }
+
+    .playlists .listening-my-sound > form {
+        //height:100%!important;
+        max-width:unset!important;
+        width:33%;
+    
+    }
+
+    .playlists .listening-my-sound > img {
+
+        //height:100%!important;
+
+    }
+
+    .playlists .listening-count-js {
+
+        font-size: 5rem;
+    }
+
+    .playlists .radio-gif {
+    width: 33%!important;
+    }
+
+    .playlists .listening-my-sound {
+  
+    justify-content: unset!important; 
+    
+}
+
+.playlists .listening-count-js {
+    width: 100px!important;
+
+    }
+
+    
+
+   
 }
