@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 	resources :playlists, only: :index
 	get 'playlists/archive', to: 'playlists#archive'
 
-	resources :sounds
+	resources :sounds, only: :update
 
 	root to: 'playlists#index'
 

@@ -44,7 +44,7 @@
         width: 15px;
     }
     .listening-count-js {
-        width: 35px;
+        width:35px;
         text-align: left;
     }
     .title-sound {
@@ -83,20 +83,23 @@
     .hidden--btn {
         display: none;
     }
+
     .links-archive {
         display: flex;
         justify-content: space-between;
-        width: 300px;
+        width:300px;
     }
+
     .index-sub-menu {
         display: flex;
         justify-content: flex-end;
+
     }
+
     .accordion__title {
-        height: 50px;
+        height:50px;
         border-color: #62938d!important;
         background: #62938d!important;
-        opacity: 1!important;
+        opacity:1!important;
     }
-    
 }
