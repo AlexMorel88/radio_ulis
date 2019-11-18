@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_195223) do
+ActiveRecord::Schema.define(version: 2019_10_03_102233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,12 +41,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_195223) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "counters", force: :cascade do |t|
-    t.integer "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "playlist_sounds", force: :cascade do |t|
     t.bigint "playlist_id"
     t.datetime "created_at", null: false
@@ -62,17 +56,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_195223) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "punches", id: :serial, force: :cascade do |t|
-    t.integer "punchable_id", null: false
-    t.string "punchable_type", limit: 20, null: false
-    t.datetime "starts_at", null: false
-    t.datetime "ends_at", null: false
-    t.datetime "average_time", null: false
-    t.integer "hits", default: 1, null: false
-    t.index ["average_time"], name: "index_punches_on_average_time"
-    t.index ["punchable_type", "punchable_id"], name: "punchable_index"
   end
 
   create_table "sounds", force: :cascade do |t|
