@@ -37,6 +37,8 @@ gem 'devise'
 gem 'activeadmin'
 gem 'figaro'
 gem 'cloudinary'
+gem "loofah", ">= 2.3.1"
+
 
 gem 'jquery-rails'
 gem 'jquery-slick-rails', '~> 1.9.0'
