@@ -45,6 +45,15 @@
 .une-title {
     font-weight: bold;
 }
+
+.counter-class {
+
+    text-align:center;
+    font-size: 1.5rem;
+    position: absolute;
+    right:5%;
+    z-index: 9999;
+}
 @media (min-height: 820px) {
     .container-text-section {
         position: relative;
@@ -58,6 +67,14 @@
         padding: 3rem;
         text-align: center;
         margin: 0% 20% 0% 20%;
+    }
+
+    .counter-class {
+
+        top: 15px;
+    font-size: 3rem;
+    
+
     }
 
     .index-sub-menu {
@@ -187,3 +204,4 @@
 
    
 }
+
